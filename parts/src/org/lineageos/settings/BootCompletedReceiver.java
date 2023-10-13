@@ -27,7 +27,7 @@ import android.view.SurfaceControl;
 
 import org.lineageos.settings.camera.NfcCameraService;
 import org.lineageos.settings.display.ColorService;
-import org.lineageos.settings.dolby.DolbyUtils;
+import org.lineageos.settings.dirac.DiracUtils;
 import org.lineageos.settings.doze.DozeUtils;
 import org.lineageos.settings.doze.PocketService;
 import org.lineageos.settings.refreshrate.RefreshUtils;
@@ -44,8 +44,12 @@ public class BootCompletedReceiver extends BroadcastReceiver {
 
         if (DEBUG) Log.d(TAG, "Received boot completed intent");
 
-        // Dolby Atmos
-        DolbyUtils.getInstance(context).onBootCompleted();
+        // Dirac
+        try {
+            DiracUtils.getInstance(context);
+        } catch (Exception e) {
+            Log.d(TAG, "Dirac is not present in system");
+        }
 
         // Doze
         DozeUtils.checkDozeService(context);
