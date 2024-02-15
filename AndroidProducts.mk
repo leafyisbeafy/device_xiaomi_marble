@@ -9,5 +9,5 @@ PRODUCT_MAKEFILES := \
 
 COMMON_LUNCH_CHOICES := \
     lineage_marble-eng \
-    lineage_marble-userdebug \
+    lineage_marble-testmode \
     lineage_marble-user
